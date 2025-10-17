@@ -1,4 +1,4 @@
-import{useState} from 'react'
+import{useState,useEffect} from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -8,42 +8,65 @@ import toast,{Toaster} from 'react-hot-toast'
 
 function App() {
   const[countA, setCountA]=useState(0);
-   const[countB,setCountB]=useState(0);
+  const[countB,setCountB]=useState(0);
+  const[winner,setWinner]=useState("");
   
  const increasecount=()=>{
-  if(countA==11){
-    toast.success("Team A  winner");
+  if(countA==5){
+  setWinner('Team A is winner 🏆🏆🏆');
+  
   }
   else{
   setCountA(countA+1);
   }
 
 }
-  const decreasecount=()=>{
-    if(countA>0){
-    setCountA(countA-1)
+ const decreasecount=()=>{
+if(countA==5){
+  setWinner("Match is over")
+}
+    else if(countA>0){
+      setCountA(countA-1)
     }
-  }
+  } 
+
 
   const increasecountB=()=>{
-    if(countB==11){
-      toast.success("Team B is Winner");
+    if(countB==5){
+      setWinner('Team B is winner 🏆🏆🏆');
     }
     else{
     setCountB(countB+1);
   }
+  
 }
 
   const decreasecountB=()=>{
-    if(countB>0){
+  
+    if(countB==5){
+      setWinner("Match is over")
+    }
+    else if(countB>0){
     setCountB(countB-1)
   }
   }
 
+  useEffect(() => {
+    if (countA >= 5 && countB !== 0) {
+      setCountB(0);
+    }
+    if (countB >= 5 && countA !== 0) {
+      setCountA(0);
+    }
+  }, [countA, countB]);
+
+
   return (
   
     <>
+     
     <h1 className='text-center font-bold text-2xl font-serif border-b-4 border-b-orange-500'>Assignment No 45</h1>     
+    <h3 className="text-center font-bold font-serif text-xl mt-6 ">{winner} </h3>
     <div className="flex flex-col justify-center items-center  sm:flex-row">
      
       <div className="bg-blue-500 h-60 w-80 rounded-xl m-20 relative">
