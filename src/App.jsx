@@ -44,7 +44,7 @@ function App() {
   
     <>
     <h1 className='text-center font-bold text-2xl font-serif border-b-4 border-b-orange-500'>Assignment No 45</h1>     
-    <div className="flex flex-col justify-center sm:flex-row">
+    <div className="flex flex-col justify-center items-center  sm:flex-row">
      
       <div className="bg-blue-500 h-60 w-80 rounded-xl m-20 relative">
         <h3 className="text-2xl font-serif font-bold text-white text-center py-2">Team A</h3>
